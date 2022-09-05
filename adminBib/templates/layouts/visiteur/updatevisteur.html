@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %} {% block content %}      
+      <!-- Edit Modal HTML -->
+        <div >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{% url 'api-visiteur-id' visiteur.id %}" method="post">
+                        
+                        {% csrf_token %}
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Mise à jour</h4>
+                        </div>
+                        <div class="modal-body">					
+                            <div class="form-group">
+                                <label id="">Nom</label>
+                                <input type="text"  id="viNom" name ="viNom" value="{{ visiteur.viNom }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Prenom</label>
+                                <input type="text"  id="viPre" name ="viPre" value="{{ visiteur.viPre }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de naisssance</label>
+                                <input type="text"  id="daNai" name ="daNai" value="{{ visiteur.daNai }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Adresse</label>
+                                <input type="text"  id="viAdr" name ="viAdr" value="{{ visiteur.viAdr }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email"  id="daEm" name ="daEm"value="{{ visiteur.daEm }}" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact</label>
+                                <input type="text"  id="viCon" name ="viCon" value="{{ visiteur.viCon }}" class="form-control" required>
+                            </div>					
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                            <input type="submit" class="btn btn-info" value="Sauvegarder">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %} {% block content %}      
+      <!-- Edit Modal HTML -->
+        <div >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{% url 'api-auteur-id' auteur.id %}" method="post">
+                        
+                        {% csrf_token %}
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Mise à jour</h4>
+                        </div>
+                        <div class="modal-body">					
+                            <div class="form-group">
+                                <label id="">Nom</label>
+                                <input type="text"  id="auNom" name ="auNom" value="{{ auteur.auNom }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Prenom</label>
+                                <input type="text"  id="auPre" name ="auPre" value="{{ auteur.auPre }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de naisssance</label>
+                                <input type="text"  id="auDaNai" name ="auDaNai" value="{{ auteur.auDaNai }}" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email"  id="daEm" name ="daEm"value="{{ auteur.daEm }}" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact</label>
+                                <input type="text"  id="auCon" name ="auCon" value="{{ auteur.auCon }}" class="form-control" required>
+                            </div>					
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                            <input type="submit" class="btn btn-info" value="Sauvegarder">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -5,40 +5,40 @@ from .models import *
 class BibliothecaireSerializer(serializers.ModelSerializer):
 	class Meta: 
 		model = Bibliothecaire
-		fields = ('nom','prenom','daNai','daNai','con','biMoPas','biAdr',)
+		fields = '__all__'
 
 class AuteurSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Auteur
-		fields = ('nom','prenom','daNai','daNai','con',)
+		fields = '__all__'
 
 class VisiteurSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Visiteur
-		fields = ('nom','prenom','daNai','daNai','con','viAdr',)
+		fields = '__all__'
 
 class CategorieSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Categorie
-		fields = ('Ca',)
+		fields = '__all__'
 
 class LivreSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Livre
-		fields = ('liCat','liCat','liCat','liQu',)
+		fields = '__all__'
 
 class EditionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Edition
-		fields = ('edNom',)
+		fields = '__all__'
 
 class ExemplaireSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Exemplaire
-		fields = ('exRef','exLi','exCa','exEd','exOp','exDb','exDf',)
+		fields = '__all__'
 
 class EcrireSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Ecrire
-		fields = ('ecAu','ecLi','ecCa',)
+		fields = '__all__'
 

@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %} {% block content %}      
+      <!-- Edit Modal HTML -->
+        <div >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{% url 'api-livre-add' %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Ajouter un nouveau livre</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+			
+                            <div class="form-group">
+                                <label >Titre</label>
+                                <input type="text"  id="liTi" name ="liTi"  class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text"  id="liDe" name ="liDe"  class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Quantité</label>
+                                <input type="text"  id="liQu" name ="liQu"  class="form-control" required>
+                            </div>
+
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Catégorie 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="liCat" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                            {% for a  in cat %}
+                                            <option value="{{a.id}}">{{a.Ca}}</option>
+                                            {% empty %}
+                                            <option value=""></option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                
+                            </div>	
+				
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                            <input type="submit" class="btn btn-success" value="Ajouter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

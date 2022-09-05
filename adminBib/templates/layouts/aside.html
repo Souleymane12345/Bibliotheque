@@ -29,21 +29,28 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'emprunt'%}"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'operation'%}"
                         aria-expanded="false">
                         <i class="fa fa-font" aria-hidden="true"></i>
                         <span class="hide-menu">Emprunt</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'visiteur'%}"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'recherche'%}"
+                        aria-expanded="false">
+                        <i class="fa fa-font" aria-hidden="true"></i>
+                        <span class="hide-menu">Recherche</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'statistique'%}"
                         aria-expanded="false">
                         <i class="fa fa-globe" aria-hidden="true"></i>
                         <span class="hide-menu">Statistique</span>
                     </a>
                 </li>
                 <li class="text-center p-20 upgrade-btn">
-                    <a href="https://www.wrappixel.com/templates/ampleadmin/"
+                    <a href="{% url 'deconnexion'%}"
                         class="btn d-grid btn-danger text-white" target="_blank">
                         Deconnexion</a>
                 </li>

@@ -1,0 +1,362 @@
+{% extends 'layouts/base.html' %} {% block content %}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+        <!-- ============================================================== -->
+        <!-- RECENT SALES -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Gestion des <b>emprunts et lectures</b></h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter une operation</span></a>
+                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer toute la liste</span></a>						
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <h3 class="box-title">Table Opération</h3>
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-top-0">Id</th>
+                                                    <th class="border-top-0">Réference</th>
+                                                    <th class="border-top-0">Titre</th>
+                                                    <th class="border-top-0">Edition</th>
+                                                    <th class="border-top-0">Visiteur</th>
+                                                    <th class="border-top-0">Operation</th>
+                                                    <th class="border-top-0">D debut</th>
+                                                    <th class="border-top-0">D fin</th>
+                                                    <th class="border-top-0">Statut</th>
+                                                </tr>
+    
+                                                <tbody>
+                                                    {% for a  in ex %}
+                                                    <tr>
+                                                        <td >{{ a.id }}</td>
+                                                        <td >{{ a.exRef }}</td>
+                                                        <td>{{ a.exEc.ecLi.liTi }}</td>
+                                                        <td>{{ a.exEd.edNom}} </td>
+                                                        <td>{{ a.exVi.viNom }} {{ a.exVi.viPre }}</td>
+                                                        <td>{{ a.exOp }}</td>
+                                                        <td>{{ a.exDb }}</td>
+                                                        <td>{{ a.exDf }}</td>
+                                                        <td>{{ a.exSt }}</td>
+                        
+                                                        <td>
+                                                            <a href="updateOperation/{{ a.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                            <a href="deleteOperation/{{ a.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                        
+                                                 
+                                                    </tr>
+                                                    {% endfor %}
+                                            
+                            
+                                                </tbody>
+                                        </table>
+                                        <div class="clearfix">
+                                            <div class="hint-text">Montrant <b>5</b> sur <b>25</b> entrées</div>
+                                            <ul class="pagination">
+                                                <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+
+                    
+                    <div class="clearfix">
+                        <div class="hint-text">Montrant <b>5</b> sur <b>25</b> entrées</div>
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="addEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{% url 'api-operation-add' %}" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Gestion des operations</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <!---
+                                <div class="form-group">
+                                    <label >ID</label>
+                                    <input type="text"  id="id" name ="id"  class="form-control" required>
+                                </div>	
+                                -->	
+                                <div class="form-group">
+                                    <label>Reférence</label>
+                                    <input type="text"  id="exRef" name ="exRef"  class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Date de debut</label>
+                                    <input type="text"  id="exDb" name ="exDb"  class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date de fin</label>
+                                    <input type="text"  id="exDf" name ="exDf"  class="form-control" required>
+                                </div>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Livre 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="exEc" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                                {% for a  in ecrire %}
+                                                <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                            
+                    
+                                </div>
+                                <br>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Visiteur 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="exVi" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                                {% for a  in visiteur %}
+                                                <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                    
+                                </div>
+                                <br>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Operation 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="exSt" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>                           
+                                                <option value="Emprunt">Emprunt</option>
+                                                <option value="Lecture">Lecture</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                    
+                                </div>
+                                <br>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Statut 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="exSt" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>                           
+                                                <option value="Egare">Egare</option>
+                                                <option value="Attente">Attente</option>
+                                                <option value="Retour">Retour</option>
+                                                <option value="Lecture">Lecture</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <br>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Edition 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="exEd" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                                {% for a  in edition %}
+                                                <option value="{{a.id}}">{{a.edNom}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="addAuteur"  class="edit">Ajouter Edition</a>  
+                                    </div>
+                    
+                                </div>
+                                				
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-success" value="Valider">
+                            </div>
+                        </form>
+                    </div>
+              </div>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="editEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Ajouter d'un nouveau livre</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <div class="form-group">
+                                    <label>Titre</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantité</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Auteur</label>
+                                    <textarea class="form-control" required></textarea>
+                                </div>
+                              
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-success" value="Ajouter">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Delete Modal HTML -->
+            <div id="deleteEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Suppression </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <p>Voulez-vous vraiment supprimer ces enregistrements ?</p>
+                                <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteOneEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Suppression </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <p>Voulez-vous vraiment supprimer cet enregistrement ?</p>
+                                <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+
+    {% include 'layouts/footer.html' %} 
+
+
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+{% endblock %}

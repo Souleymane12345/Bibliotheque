@@ -1,0 +1,102 @@
+{% extends 'layouts/base.html' %} {% block content %}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+        <!-- ============================================================== -->
+        <!-- RECENT SALES -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Choix du <b>filtre</b></h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="#"  class="btn btn-success" data-toggle="modal"><i
+                                        class="material-icons">zoom_in</i> <span>Reférence Livre</span></a>
+                                <a href="#"  class="btn btn-primary" data-toggle="modal"><i
+                                        class="material-icons">zoom_in</i> <span>Opération</span></a>
+                                <a href="#"  class="btn btn-info" data-toggle="modal"><i
+                                        class="material-icons">zoom_in</i> <span>Statut</span></a>
+                                <a href="#"  class="btn btn-danger" data-toggle="modal"><i
+                                    class="material-icons">zoom_in</i> <span>Date</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <br>
+                    <div class="input-group">
+                        <input type="search" id="value" class="form-control rounded" placeholder="Recherche" aria-label="Search"
+                            aria-describedby="search-addon" />
+                        <button type="button" id="recherche" class="btn btn-outline-success">recherche</button>
+                    </div>
+
+
+                <br>
+                <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="white-box">
+                                <h3 class="box-title">Table Opération</h3>
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap">
+                                        <tbody id="filtre">                    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+
+    {% include 'layouts/footer.html' %}
+
+
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,279 @@
+{% extends 'layouts/base.html' %} {% block content %}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+        <!-- ============================================================== -->
+        <!-- RECENT SALES -->
+        <!-- ============================================================== -->
+        
+        <div class="row">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Gestion des <b>livres</b></h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Association livre auteur</span></a>
+                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer toute la liste</span></a>						
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <h3 class="box-title">Table Visiteur</h3>
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-top-0">Id</th>
+                                                    <th class="border-top-0">Titre</th>
+                                                    <th class="border-top-0">Catégorie</th>
+                                                    <th class="border-top-0">Quantité</th>
+                                                    <th class="border-top-0">N Auteur</th>
+                                                    <th class="border-top-0">Pr Auteur</th>
+                                                    <th class="border-top-0">Livre</th>
+                                                    <th class="border-top-0">Auteur</th>
+                                                </tr>
+    
+                                                <tbody>
+                                                    {% for a  in ecr %}
+                                                    <tr>
+                                                        <td id="id_visiteur">{{ a.id }}</td>
+                                                        <td>{{ a.ecLi.liTi }}</td>
+                                                        <td>{{ a.ecLi.liCat.Ca}} </td>
+                                                        <td>{{ a.ecLi.liQu }}</td>
+                                                        <td>{{ a.ecAu.auNom }}</td>
+                                                        <td>{{ a.ecAu.auPre }}</td>
+                                                        <td>
+                                                            <a href="updateLivre/{{ a.ecLi.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                            <a href="deleteLivre/{{ a.ecLi.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="updateAuteur/{{ a.ecAu.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                            <a href="deleteAuteur/{{ a.ecAu.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                                                 
+                                                    </tr>
+                                                    {% endfor %}
+                                            
+                            
+                                                </tbody>
+                                        </table>
+                                        <div class="clearfix">
+                                            <div class="hint-text">Montrant <b>5</b> sur <b>25</b> entrées</div>
+                                            <ul class="pagination">
+                                                <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+
+                    
+                    
+                </div>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="addEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{% url 'api-ecrire-add' %}" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Gestion des livres</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <!---
+                                <div class="form-group">
+                                    <label >ID</label>
+                                    <input type="text"  id="id" name ="id"  class="form-control" required>
+                                </div>	
+                                -->	
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Livre 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="ecLi" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                                {% for a  in livre %}
+                                                <option value="{{a.id}}">{{a.liTi}} {{a.liCat.Ca}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <a href="addLivre"  class="edit">Ajouter livre</a>  
+                                    </div>
+                    
+                                </div>
+                                <br>
+                                <div class="form3-rows">
+                                    <div class="form3-label">
+                                        Auteur 
+                                    </div>
+                                    
+                                    <div class="form3-label-field pt20">
+                                        <div class="select-custom-third">
+                                            <select name="ecAu" class="chosen-select" style="color:black;" id="patient">
+                                                <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                                {% for a  in auteur %}
+                                                <option value="{{a.id}}">{{a.auNom}} {{a.auPre}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="addAuteur"  class="edit">Ajouter auteur</a>  
+                                    </div>
+                    
+                                </div>				
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-success" value="Associer">
+                            </div>
+                        </form>
+                    </div>
+              </div>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="editEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Ajouter d'un nouveau livre</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <div class="form-group">
+                                    <label>Titre</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantité</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Auteur</label>
+                                    <textarea class="form-control" required></textarea>
+                                </div>
+                              
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-success" value="Ajouter">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Delete Modal HTML -->
+            <div id="deleteEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Suppression </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <p>Voulez-vous vraiment supprimer ces enregistrements ?</p>
+                                <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteOneEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Suppression </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">					
+                                <p>Voulez-vous vraiment supprimer cet enregistrement ?</p>
+                                <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+
+    {% include 'layouts/footer.html' %} 
+
+
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+{% endblock %}

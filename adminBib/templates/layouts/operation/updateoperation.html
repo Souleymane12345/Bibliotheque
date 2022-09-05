@@ -1,0 +1,148 @@
+
+        {% extends 'layouts/base.html' %} {% block content %}      
+        <!-- Edit Modal HTML -->
+          <div >
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form action="{% url 'api-operation-id' ex.id %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Mise à jour d'une operation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <!---
+                            <div class="form-group">
+                                <label >ID</label>
+                                <input type="text"  id="id" name ="id" value="{{ ex. }}"  class="form-control" required>
+                            </div>	
+                            -->	
+                            <div class="form-group">
+                                <label>Reférence</label>
+                                <input type="text"  id="exRef" name ="exRef" value="{{ ex.exRef }}"  class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date de debut</label>
+                                <input type="text"  id="exDb" name ="exDb" value="{{ ex.exDb }}"  class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de fin</label>
+                                <input type="text"  id="exDf" name ="exDf" value="{{ ex.exDb }}"  class="form-control" required>
+                            </div>
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Livre 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="exEc" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                            {% for a  in ecrire %}
+                                            <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
+                                            {% empty %}
+                                            <option value=""></option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                        
+                
+                            </div>
+                            <br>
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Visiteur 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="exVi" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                            {% for a  in visiteur %}
+                                            <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
+                                            {% empty %}
+                                            <option value=""></option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                
+                            </div>
+                            <br>
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Operation 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="exSt" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>                           
+                                            <option value="Emprunt">Emprunt</option>
+                                            <option value="Lecture">Lecture</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                
+                            </div>
+                            <br>
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Statut 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="exSt" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>                           
+                                            <option value="Egare">Egare</option>
+                                            <option value="Attente">Attente</option>
+                                            <option value="Retour">Retour</option>
+                                            <option value="Lecture">Lecture</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                
+                            </div>
+                            <br>
+                            <div class="form3-rows">
+                                <div class="form3-label">
+                                    Edition 
+                                </div>
+                                
+                                <div class="form3-label-field pt20">
+                                    <div class="select-custom-third">
+                                        <select name="exEd" class="chosen-select" style="color:black;" id="patient">
+                                            <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
+                                            {% for a  in edition %}
+                                            <option value="{{a.id}}">{{a.edNom}}</option>
+                                            {% empty %}
+                                            <option value=""></option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="addAuteur"  class="edit">Ajouter Edition</a>  
+                                </div>
+                
+                            </div>
+                                            
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                            <input type="submit" class="btn btn-success" value="Valider">
+                        </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+          {% endblock %}
+  

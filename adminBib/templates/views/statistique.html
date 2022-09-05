@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %} {% block content %}
+
+
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Statistique</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <div class="d-md-flex">
+                    <ol class="breadcrumb ms-auto">
+                        <li><a href="#" class="fw-normal">Statistique</a></li>
+                        </ol>                
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Three charts -->
+        <!-- ============================================================== -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Nombre de livres : {{livre}} </h3>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Nombre de visiteurs : {{visiteur}} </h3>
+   
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Nombre d'exemplaires : {{exemplaire}}  </h3>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Nombre de bibliothécaire : {{bibliothecaire}} </h3>
+   
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Graphique des operations  </h3>
+                    <canvas id="operation-chart" data-url="{% url 'operation-chart' %}"></canvas>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Graphique des status</h3>
+                    <canvas id="statut-chart" data-url="{% url 'statut-chart' %}"></canvas>
+
+                    
+                </div>
+            </div>
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- PRODUCTS YEARLY SALES -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- RECENT SALES -->
+        <!-- ============================================================== -->
+
+    </div>
+</div>
+
+{% endblock %}
