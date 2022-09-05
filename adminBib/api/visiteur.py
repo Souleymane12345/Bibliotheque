@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 @api_view(['POST'])
 def add(request):
+    
 	visiteur = VisiteurSerializer(data=request.data)
 
 	# validating for already existing data

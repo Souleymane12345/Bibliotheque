@@ -1,5 +1,6 @@
 {% extends 'layouts/base.html' %} {% block content %}
 
+<div class="page-wrapper">
 <div class="container-fluid">
 
     <!-- ============================================================== -->
@@ -19,6 +20,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -28,6 +30,7 @@
                                     <label for="selectAll"></label>
                                 </span>
                             </th>
+                            <th>Id</th>
                             <th>Nom</th>
                             <th>Prenom</th>
                             <th>Âge</th>
@@ -38,6 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for a  in vis %}
                         <tr>
                             <td>
                                 <span class="custom-checkbox">
@@ -45,96 +49,24 @@
                                     <label for="checkbox1"></label>
                                 </span>
                             </td>
-                            <td>Thomas Hardy</td>
-                            <td>thomashardy@mail.com</td>
-                            <td>89 Chiaroscuro Rd, Portland, USA</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
+                            <td name="id">{{ a.id }}</td>
+                            <td>{{ a.nom }}</td>
+                            <td>{{ a.prenom}} </td>
+                            <td>{{ a.daNai }}</td>
+                            <td>{{ a.daEm }}</td>
+                            <td>{{ a.viAdr }}</td>
+                            <td>{{ a.con }}</td>
                             <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteOneEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <a href="#editEmployeeModal" id="editEmployeeModalId" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteOneEmployeeModal" id="deleteOneEmployeeModalId" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                    <label for="checkbox2"></label>
-                                </span>
-                            </td>
-                            <td>Dominique Perrier</td>
-                            <td>dominiqueperrier@mail.com</td>
-                            <td>Obere Str. 57, Berlin, Germany</td>
-                            <td>(313) 555-5735</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteOneEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                    <label for="checkbox3"></label>
-                                </span>
-                            </td>
-                            <td>Maria Anders</td>
-                            <td>mariaanders@mail.com</td>
-                            <td>25, rue Lauriston, Paris, France</td>
-                            <td>(503) 555-9931</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteOneEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                    <label for="checkbox4"></label>
-                                </span>
-                            </td>
-                            <td>Fran Wilson</td>
-                            <td>franwilson@mail.com</td>
-                            <td>C/ Araquil, 67, Madrid, Spain</td>
-                            <td>(204) 619-5731</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteOneEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>					
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                    <label for="checkbox5"></label>
-                                </span>
-                            </td>
-                            <td>Martin Blank</td>
-                            <td>martinblank@mail.com</td>
-                            <td>Via Monte Bianco 34, Turin, Italy</td>
-                            <td>(480) 631-2097</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>(171) 555-2222</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteOneEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr> 
+                        {% endfor %}
+				
+
                     </tbody>
                 </table>
+                
                 <div class="clearfix">
                     <div class="hint-text">Montrant <b>5</b> sur <b>25</b> entrées</div>
                     <ul class="pagination">
@@ -153,14 +85,15 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="{% url 'add-visiteur' %}" method="post">
+                        {% csrf_token %}
                         <div class="modal-header">						
                             <h4 class="modal-title">Ajouter un nouveau visiteur</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label >Nom</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
@@ -204,8 +137,8 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Nom</label>
-                                <input type="text" class="form-control" required>
+                                <label id="idUpdate">Nom</label>
+                                <input type="text"   class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Prenom</label>
@@ -282,6 +215,6 @@
     </div>
 
 </div>
-
+</div>
 
 {% endblock %}

@@ -5,9 +5,9 @@ from adminBib.api import visiteur
 urlpatterns = [
 
 	################ ACCES PAGE ###################
-	path('', views.home, name='home'),
+	#path('', views.home, name='home'),
 	path('visiteur', views.visiteur, name='visiteur'),
-	path('login2', views.login2, name='login2'),
+	path('', views.login2, name='login2'),
 	path('login_1', views.login_1, name='login_1'),
 	path('emprunt', views.emprunt, name='emprunt'),
 	path('livre', views.livre, name='livre'),

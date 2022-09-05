@@ -5,12 +5,15 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+"""
 def home(request):
     return render(request,'views/home.html')
-
+"""
 
 def visiteur(request):
-    return render(request,'views/visiteur.html')
+
+    vis = Visiteur.objects.all()
+    return render(request,'views/visiteur.html',locals())
 
 def login2(request):
     return render(request,'views/login.html')
@@ -24,16 +27,14 @@ def livre(request):
 
 def login_1(request):
     if request.method == 'POST':
-            loginEmail = request.POST['loginEmail']
+            loginId = request.POST['loginId']
             loginPassword = request.POST['loginPassword']
-            print('c'+loginEmail+'c'+loginPassword)
-            user = authenticate(email=loginEmail, password=loginPassword)
+            user = authenticate(username=loginId, password=loginPassword)
             print(user)
             if user is not None:  # Si l'objet renvoyé n'est pas None
                 if user.is_active:
-                    print('222222222222222222222')
                     login(request, user)  # nous connectons l'utilisateur
-                    return render(request, 'views/home.html')
+                    return render(request, 'views/home.html',locals())
                 else:
                        return render(request, 'views/login.html')
             else: # sinon une erreur sera affichée
