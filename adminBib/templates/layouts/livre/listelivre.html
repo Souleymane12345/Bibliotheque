@@ -53,25 +53,27 @@
                                                 </tr>
     
                                                 <tbody>
-                                                    {% for a  in ecr %}
-                                                    <tr>
-                                                        <td id="id_visiteur">{{ a.id }}</td>
-                                                        <td>{{ a.ecLi.liTi }}</td>
-                                                        <td>{{ a.ecLi.liCat.Ca}} </td>
-                                                        <td>{{ a.ecLi.liQu }}</td>
-                                                        <td>{{ a.ecAu.auNom }}</td>
-                                                        <td>{{ a.ecAu.auPre }}</td>
-                                                        <td>
-                                                            <a href="updateLivre/{{ a.ecLi.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
-                                                            <a href="deleteLivre/{{ a.ecLi.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                        </td>
-                                                        <td>
-                                                            <a href="updateAuteur/{{ a.ecAu.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
-                                                            <a href="deleteAuteur/{{ a.ecAu.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                        </td>
-                                                 
-                                                    </tr>
+                                                    {% if ecr %}
+                                                        {% for a  in ecr %}
+                                                            <tr>
+                                                                <td id="id_visiteur">{{ a.id }}</td>
+                                                                <td>{{ a.ecLi.liTi }}</td>
+                                                                <td>{{ a.ecLi.liCat.Ca}} </td>
+                                                                <td>{{ a.ecLi.liQu }}</td>
+                                                                <td>{{ a.ecAu.auNom }}</td>
+                                                                <td>{{ a.ecAu.auPre }}</td>
+                                                                <td>
+                                                                    <a href="updateLivre/{{ a.ecLi.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                                    <a href="deleteLivre/{{ a.ecLi.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="updateAuteur/{{ a.ecAu.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                                    <a href="deleteAuteur/{{ a.ecAu.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                                </td>
+                                                        
+                                                            </tr>
                                                     {% endfor %}
+                                                {% endif %}
                                             
                             
                                                 </tbody>
@@ -135,11 +137,13 @@
                                         <div class="select-custom-third">
                                             <select name="ecLi" class="chosen-select" style="color:black;" id="patient">
                                                 <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                                {% for a  in livre %}
-                                                <option value="{{a.id}}">{{a.liTi}} {{a.liCat.Ca}}</option>
-                                                {% empty %}
-                                                <option value=""></option>
-                                                {% endfor %}
+                                                {% if livre %}
+                                                    {% for a  in livre %}
+                                                    <option value="{{a.id}}">{{a.liTi}} {{a.liCat.Ca}}</option>
+                                                    {% empty %}
+                                                    <option value=""></option>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
@@ -159,11 +163,13 @@
                                         <div class="select-custom-third">
                                             <select name="ecAu" class="chosen-select" style="color:black;" id="patient">
                                                 <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                                {% for a  in auteur %}
-                                                <option value="{{a.id}}">{{a.auNom}} {{a.auPre}}</option>
-                                                {% empty %}
-                                                <option value=""></option>
-                                                {% endfor %}
+                                                {% if auteur %}
+                                                    {% for a  in auteur %}
+                                                    <option value="{{a.id}}">{{a.auNom}} {{a.auPre}}</option>
+                                                    {% empty %}
+                                                    <option value=""></option>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>

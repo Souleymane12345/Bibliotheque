@@ -34,14 +34,16 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-12">
                 <div class="white-box analytics-info">
-                    <h3 class="box-title">Nombre de livres : {{livre}} </h3>
-
+                    
+                    <h3 class="box-title">Nombre de livres : {% if livre %} {{livre}} {% endif %} </h3>
+                    
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="white-box analytics-info">
-                    <h3 class="box-title">Nombre de visiteurs : {{visiteur}} </h3>
-   
+                    
+                    <h3 class="box-title">Nombre de visiteurs : {% if visiteur %} {{visiteur}} {% endif %} </h3>
+                    
                 </div>
             </div>
 
@@ -50,16 +52,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-12">
                 <div class="white-box analytics-info">
-                    <h3 class="box-title">Nombre d'exemplaires : {{exemplaire}}  </h3>
+                    
+                    <h3 class="box-title">Nombre d'exemplaires : {% if exemplaire %} {{exemplaire}} {% endif %}  </h3>
+                   
+                </div>
+            </div>
 
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="white-box analytics-info">
-                    <h3 class="box-title">Nombre de bibliothécaire : {{bibliothecaire}} </h3>
-   
-                </div>
-            </div>
 
         </div>
 

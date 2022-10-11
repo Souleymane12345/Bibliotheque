@@ -40,11 +40,13 @@
                                     <div class="select-custom-third">
                                         <select name="exEc" class="chosen-select" style="color:black;" id="patient">
                                             <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                            {% for a  in ecrire %}
-                                            <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
-                                            {% empty %}
-                                            <option value=""></option>
-                                            {% endfor %}
+                                            {% if ecrire %}
+                                                {% for a  in ecrire %}
+                                                <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            {% endif %}
                                         </select>
                                     </div>
                                 </div>
@@ -62,11 +64,13 @@
                                     <div class="select-custom-third">
                                         <select name="exVi" class="chosen-select" style="color:black;" id="patient">
                                             <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                            {% for a  in visiteur %}
-                                            <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
-                                            {% empty %}
-                                            <option value=""></option>
-                                            {% endfor %}
+                                            {% if visiteur %}
+                                                {% for a  in visiteur %}
+                                                <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            {% endif %}
                                         </select>
                                     </div>
                                 </div>
@@ -121,17 +125,17 @@
                                     <div class="select-custom-third">
                                         <select name="exEd" class="chosen-select" style="color:black;" id="patient">
                                             <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                            {% for a  in edition %}
-                                            <option value="{{a.id}}">{{a.edNom}}</option>
-                                            {% empty %}
-                                            <option value=""></option>
-                                            {% endfor %}
+                                            {% if edition %}
+                                                {% for a  in edition %}
+                                                <option value="{{a.id}}">{{a.edNom}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            {% endif %}
                                         </select>
                                     </div>
                                 </div>
-                                <div>
-                                    <a href="addAuteur"  class="edit">Ajouter Edition</a>  
-                                </div>
+
                 
                             </div>
                                             

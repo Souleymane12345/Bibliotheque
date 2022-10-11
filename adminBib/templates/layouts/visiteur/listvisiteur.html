@@ -43,23 +43,25 @@
                                             </tr>
 
                                             <tbody>
-                                                {% for a  in vis %}
-                                                <tr>
-                                                    <td id="id_visiteur">{{ a.id }}</td>
-                                                    <td>{{ a.viNom }}</td>
-                                                    <td>{{ a.viPre}} </td>
-                                                    <td>{{ a.daNai }}</td>
-                                                    <td>{{ a.daEm }}</td>
-                                                    <td>{{ a.viAdr }}</td>
-                                                    <td>{{ a.viCon }}</td>
-                                                    <td>
-                                                        <a href="updateVisiteur/{{ a.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="deleteVisiteur/{{ a.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                    </td>
-                                                </tr>
-                                                {% endfor %}
+                                                {% if vis %}
+                                                    {% for a  in vis %}
+                                                    <tr>
+                                                        <td id="id_visiteur">{{ a.id }}</td>
+                                                        <td>{{ a.viNom }}</td>
+                                                        <td>{{ a.viPre}} </td>
+                                                        <td>{{ a.daNai }}</td>
+                                                        <td>{{ a.daEm }}</td>
+                                                        <td>{{ a.viAdr }}</td>
+                                                        <td>{{ a.viCon }}</td>
+                                                        <td>
+                                                            <a href="updateVisiteur/{{ a.id }}"  class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="deleteVisiteur/{{ a.id }}"  class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                {% endif %}
                                         
                         
                                             </tbody>

@@ -13,7 +13,7 @@ $(function () {
             datasets: [{
               data: data.data,
               backgroundColor: [
-                'bleu', 'red'
+                'bleu', 'red','green','yellow'
               ],
               label: 'Population'
             }],
@@ -45,7 +45,7 @@ $(function () {
             labels: data.labels,
             datasets: [{
               label: 'Statut',
-              backgroundColor:['blue','green','yellow'],
+              backgroundColor:['blue','green','yellow','red'],
               data: data.data
             }]          
           },

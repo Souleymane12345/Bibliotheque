@@ -90,8 +90,8 @@ class Exemplaire (models.Model):
     )
 
     exRef = models.CharField(max_length=150)
-    exEc = models.ForeignKey(Ecrire, on_delete=models.CASCADE ,blank=True, null=True,related_name='Exemplaire')
     exVi = models.ForeignKey(Visiteur, on_delete=models.CASCADE ,blank=True, null=True,related_name='Visiteur')
+    exEc = models.ForeignKey(Ecrire, on_delete=models.CASCADE ,blank=True, null=True,related_name='Exemplaire')
     exEd = models.ForeignKey(Edition,on_delete=models.CASCADE, blank=True, null=True,related_name='Exemplaire')
     exOp = models.CharField(max_length=255, choices=CHOICES, default='lecture', verbose_name='Opération')
     exSt = models.CharField(max_length=255, choices=CHOICES_STATUT, default='lecture', verbose_name='Statut')

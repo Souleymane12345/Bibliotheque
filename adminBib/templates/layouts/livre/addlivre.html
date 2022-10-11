@@ -36,11 +36,13 @@
                                     <div class="select-custom-third">
                                         <select name="liCat" class="chosen-select" style="color:black;" id="patient">
                                             <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                            {% for a  in cat %}
-                                            <option value="{{a.id}}">{{a.Ca}}</option>
-                                            {% empty %}
-                                            <option value=""></option>
-                                            {% endfor %}
+                                            {% if a %}
+                                                {% for a  in cat %}
+                                                <option value="{{a.id}}">{{a.Ca}}</option>
+                                                {% empty %}
+                                                <option value=""></option>
+                                                {% endfor %}
+                                            {% endif %}
                                         </select>
                                     </div>
                                 </div>

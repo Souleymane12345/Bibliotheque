@@ -9,7 +9,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from adminBib.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Count
 
 
 # Create your views here.
@@ -353,10 +353,14 @@ def operationChart(request):
     labels = []
     data = []
 
-    queryset = Exemplaire.objects.order_by('-exRef')
+    #queryset = Exemplaire.objects.order_by('-exRef')
+    queryset = Exemplaire.objects.values('exOp').annotate(count=Count('exOp'))
+   # print(queryset)
     for ex in queryset:
-        labels.append(ex.exOp)
-        data.append(1)
+        labels.append(ex['exOp'])
+        data.append(ex['count'])
+
+
 
   
     return JsonResponse(data={
@@ -369,13 +373,15 @@ def operationStatut(request):
     labels = []
     data = []
 
-    queryset = Exemplaire.objects.order_by('-exRef')
+    #queryset = Exemplaire.objects.order_by('-exRef')
+    queryset = Exemplaire.objects.values('exSt').annotate(count=Count('exSt'))
     for ex in queryset:
-        labels.append(ex.exSt)
-        data.append(1)
+        labels.append(ex['exSt'])
+        data.append(ex['count'])
 
   
     return JsonResponse(data={
         'labels': labels,
         'data': data,
     })
+

@@ -53,6 +53,7 @@
                                                 </tr>
     
                                                 <tbody>
+                                                    {% if ex %}
                                                     {% for a  in ex %}
                                                     <tr>
                                                         <td >{{ a.id }}</td>
@@ -73,6 +74,7 @@
                                                  
                                                     </tr>
                                                     {% endfor %}
+                                                    {% endif %}
                                             
                             
                                                 </tbody>
@@ -106,18 +108,6 @@
                     </div>
 
                     
-                    <div class="clearfix">
-                        <div class="hint-text">Montrant <b>5</b> sur <b>25</b> entrées</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!-- Edit Modal HTML -->
@@ -160,11 +150,13 @@
                                         <div class="select-custom-third">
                                             <select name="exEc" class="chosen-select" style="color:black;" id="patient">
                                                 <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                                {% for a  in ecrire %}
-                                                <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
-                                                {% empty %}
-                                                <option value=""></option>
-                                                {% endfor %}
+                                                {% if ecrire %}
+                                                    {% for a  in ecrire %}
+                                                    <option value="{{a.id}}">{{ a.ecLi.liTi }} de {{ a.ecAu.auNom }}</option>
+                                                    {% empty %}
+                                                    <option value=""></option>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
@@ -182,11 +174,13 @@
                                         <div class="select-custom-third">
                                             <select name="exVi" class="chosen-select" style="color:black;" id="patient">
                                                 <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                                {% for a  in visiteur %}
-                                                <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
-                                                {% empty %}
-                                                <option value=""></option>
-                                                {% endfor %}
+                                                {% if visiteur %}
+                                                    {% for a  in visiteur %}
+                                                    <option value="{{a.id}}">{{a.viNom}} {{a.viPre}}</option>
+                                                    {% empty %}
+                                                    <option value=""></option>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
@@ -241,11 +235,13 @@
                                         <div class="select-custom-third">
                                             <select name="exEd" class="chosen-select" style="color:black;" id="patient">
                                                 <option select>&nbsp;&nbsp;&nbsp; --- selection ---</option>
-                                                {% for a  in edition %}
-                                                <option value="{{a.id}}">{{a.edNom}}</option>
-                                                {% empty %}
-                                                <option value=""></option>
-                                                {% endfor %}
+                                                {% if edition %}
+                                                    {% for a  in edition %}
+                                                    <option value="{{a.id}}">{{a.edNom}}</option>
+                                                    {% empty %}
+                                                    <option value=""></option>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
